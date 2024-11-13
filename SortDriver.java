@@ -5,12 +5,15 @@ import java.util.Scanner;
 public class SortDriver {
 
     public static void main(String[] args) {
+
         if (args.length < 1) {
-            System.out.println("Usage: java SortDriver <filename>");
+            System.out.println("No inputted file");
             return;
         }
 
         String filename = args[0];
+        
+        // Calls the readNumbersFromFile method to put the nums into an array
         int[] numbers = readNumbersFromFile(filename);
 
         if (numbers == null) {
@@ -18,10 +21,11 @@ public class SortDriver {
         }
 
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("selection-sort (s) merge-sort (m) heap-sort (h) quick-sort-fp (q) quick-sort-rp (r)");
         System.out.print("Enter the algorithm: ");
-        String choice = scanner.nextLine();
 
+        String choice = scanner.nextLine();
         Sorting sorting = new Sorting();
 
         long comparisons = 0;
@@ -44,6 +48,7 @@ public class SortDriver {
                 break;
             default:
                 System.out.println("Invalid choice");
+                scanner.close();
                 return;
         }
 
@@ -51,22 +56,28 @@ public class SortDriver {
         scanner.close(); 
     }
 
+    
+    // Puts the numbers from the inputted file into an array
     private static int[] readNumbersFromFile(String filename) {
-        try {
+        try {            
             Scanner fileScanner = new Scanner(new File(filename));
+
             // Assuming the file contains a single line of space-separated integers
             String[] numberStrings = fileScanner.nextLine().split(" ");
+
             int[] numbers = new int[numberStrings.length];
+
             for (int i = 0; i < numberStrings.length; i++) {
                 numbers[i] = Integer.parseInt(numberStrings[i]);
             }
+
             fileScanner.close();
             return numbers;
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + filename);
-        } catch (NumberFormatException e) {
-            System.out.println("File contains non-integer values.");
         }
+
         return null;
     }
 }
