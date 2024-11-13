@@ -65,16 +65,46 @@ public class Sorting {
         return quickSortHelper(arr, 0, arr.length - 1);
     }
 
+    private static final int INSERTION_SORT_THRESHOLD = 10;
+
     private long quickSortHelper(int[] arr, int first, int last) {
         long comparisons = 0;
-        if (first < last) {
-            int[] result = split(arr, first, last);
-            comparisons += result[1];
-            comparisons += quickSortHelper(arr, first, result[0] - 1);
-            comparisons += quickSortHelper(arr, result[0] + 1, last);
+        while (first < last) {
+            if (last - first < INSERTION_SORT_THRESHOLD) {
+                comparisons += insertionSort(arr, first, last);
+                break;
+            } else {
+                int[] result = split(arr, first, last);
+                comparisons += result[1];
+                if (result[0] - first < last - result[0]) {
+                    comparisons += quickSortHelper(arr, first, result[0] - 1);
+                    first = result[0] + 1;
+                } else {
+                    comparisons += quickSortHelper(arr, result[0] + 1, last);
+                    last = result[0] - 1;
+                }
+            }
         }
         return comparisons;
     }
+
+    
+    private long insertionSort(int[] arr, int first, int last) {
+        long comparisons = 0;
+        for (int i = first + 1; i <= last; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= first && arr[j] > key) {
+                comparisons++;
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            comparisons++;
+            arr[j + 1] = key;
+        }
+        return comparisons;
+    }
+    
 
     private int[] split(int[] arr, int first, int last) {
         int pivot = arr[last];

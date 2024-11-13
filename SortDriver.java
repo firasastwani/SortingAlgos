@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class SortDriver {
 
@@ -51,6 +52,10 @@ public class SortDriver {
                 scanner.close();
                 return;
         }
+
+
+        // Testing the sorted array
+        //System.out.println("Sorted array: " + Arrays.toString(numbers));
 
         System.out.println("#" + choice + "-sort comparisons: " + comparisons);
         scanner.close(); 
