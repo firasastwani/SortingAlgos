@@ -3,7 +3,8 @@ Firas Astwani
 ffa53456@uga.edu
 
 
-Source: Algorithim code from slides, used chatGPT for debugging when issues arose in the sorting
+Source: Algorithim code from slides, used chatGPT for debugging when issues arose in the sorting. 
+Had issues with overflow on quicksort when using large inputs, asked it to make it iterative instead to fix the issue.
 
 
 Expiriment 1 compile and run instructions: javac SortDriverEX1.java (txt file) -> java SortDriverEX1.java (txt file)
