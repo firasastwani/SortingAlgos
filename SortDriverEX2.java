@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays; 
 
 public class SortDriverEX2 {
 
@@ -11,8 +12,10 @@ public class SortDriverEX2 {
         int n = scanner.nextInt();
 
         int[] numbers = new int[n];
+
+        // Generates random array (length n) of numbers
         for (int i = 0; i < n; i++) {
-            numbers[i] = (int) (Math.random() * 10000); // Random values between 0 and 9999
+            numbers[i] = (int) (Math.random() * 10000); 
         }
 
         System.out.println("selection-sort (s) merge-sort (m) heap-sort (h) quick-sort-fp (q) quick-sort-rp (r)");
