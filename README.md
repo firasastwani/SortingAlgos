@@ -58,11 +58,5 @@ The following sorting algorithms are implemented in the `Sorting` class:
 
 3. Enter the number of random values to generate and choose a sorting algorithm as described above.
 
-## Notes
-
+Output: 
 - The program outputs the number of comparisons made by the chosen sorting algorithm.
-- Ensure that the input file for Experiment 1 contains a single line of space-separated integers.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
